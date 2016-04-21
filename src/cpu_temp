@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -eu
+
+# get the number of cpus from sysctl
+number_cpus="$(sysctl -a 'hw.ncpu' | cut -w -f2)"
+end=$((number_cpus - 1))
+
+# print the temperature from each cpu sensor
+for i in $(seq 0 $end); do
+	cpu_sensor="dev.cpu.$i.temperature"
+	# NA is for consistent output with disk loop
+	cat -t <<- _EOF_
+		$(date +%s),cpu.$i,NA,$(sysctl -a "$cpu_sensor" | cut -w -f2)
+_EOF_
+done
+
+exit 0

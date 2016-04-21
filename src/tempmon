@@ -1,0 +1,12 @@
+#!/bin/sh
+
+check_cpu () {
+	src/cpu_temp
+}
+
+check_disk () {
+	src/disk_tmp
+}
+
+check_cpu
+check_disk
