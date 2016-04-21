@@ -5,7 +5,7 @@ check_cpu () {
 }
 
 check_disk () {
-	src/disk_temp
+	sudo src/disk_temp
 }
 
 check_cpu
