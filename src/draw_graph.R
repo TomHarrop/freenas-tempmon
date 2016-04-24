@@ -20,8 +20,8 @@ sensor.data[grep("^cpu", sensor), type := "cpu"]
 sensor.data[is.na(type), type := "disk"]
 
 # plot
-ggplot(sensor.data[!is.na(temperature)], aes(x = time, y = temperature, group = sensor, colour = type)) +
+ggplot(sensor.data[!is.na(temperature)], aes(x = time, y = temperature, group = sensor, colour = sensor)) +
 #  facet_wrap(~type, ncol = 1) +
   scale_color_discrete() +
-  geom_smooth(method = "loess", se = FALSE, size = 0.5, alpha = 0.7) +
+  geom_smooth(method = "glm", se = FALSE, size = 0.5, alpha = 0.7) +
   geom_point(size = 3, alpha = 0.7)

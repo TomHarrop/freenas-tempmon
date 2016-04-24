@@ -39,3 +39,18 @@ pd <- data.frame(
 apply(pd, 2, class)
 ggplot(pd, aes(x = time, y = y)) + geom_point()
 
+# get cll weather from weather underground in python
+import requsts
+r = requests.get('http://api.wunderground.com/api/[API_KEY]/conditions/q/zmw:00000.17.07643.json')
+r.json()['current_observation']['local_epoch']
+r.json()['current_observation']['temp_c']
+r.json()['current_observation']['observation_epoch']
+
+
+
+
+
+
+
+
+
