@@ -1,12 +1,10 @@
 #!/bin/sh
 
-check_cpu () {
-	src/cpu_temp
-}
+cpu_temp_file="dat/cpu_temp.csv"
 
-check_disk () {
-	sudo src/disk_temp
-}
+if [ ! -f "$cpu_temp_file" ]; then
+    touch "$cpu_temp_file"
+fi
 
-check_cpu
-check_disk
+/usr/local/bin/cpu_temp >> "$cpu_temp_file"
+	# sudo src/disk_temp
