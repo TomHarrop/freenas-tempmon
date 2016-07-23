@@ -21,9 +21,10 @@ def main():
     time = weather.json()['current_observation']['local_epoch']
     sensor = weather.json()['current_observation']['display_location']['full']
     serial = weather.json()['current_observation']['station_id']
-    temperature = weather.json()['current_observation']['temp_c']
+    temperature = str(weather.json()['current_observation']['temp_c'])
     weather_line = [time, sensor, serial, temperature]
     print weather_line
+    print ','.join(weather_line)
 
     # # print output to data file
     # weather_file = 'dat/weather.csv'
