@@ -26,16 +26,15 @@ def main():
     print weather_line
     print ','.join(weather_line)
 
-    # # print output to data file
-    # weather_file = 'dat/weather.csv'
-    # if not os.path.isdir('dat'):
-    #     os.mkdir('dat')
-    # if not os.path.exists(weather_file):
-    #     open(weather_file, 'w').close()
+    # print output to data file
+    weather_file = 'dat/weather.csv'
+    if not os.path.isdir('dat'):
+        os.mkdir('dat')
+    if not os.path.exists(weather_file):
+        open(weather_file, 'w').close()
 
-    # with open(weather_file, 'a') as weather_append:
-    #     weather_append.write(','.join([time, sensor, serial, temperature]) +
-    #                        '\n')
+    with open(weather_file, 'a') as weather_append:
+        weather_append.write(','.join(weather_line) + '\n')
 
 if __name__ == "__main__":
     main()
