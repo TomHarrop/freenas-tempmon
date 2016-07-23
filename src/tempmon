@@ -1,10 +1,16 @@
 #!/bin/sh
 
 cpu_temp_file="dat/cpu_temp.csv"
+disk_temp_file="dat/disk_temp.csv"
 
 if [ ! -f "$cpu_temp_file" ]; then
     touch "$cpu_temp_file"
 fi
 
 /usr/local/bin/cpu_temp >> "$cpu_temp_file"
-	# sudo src/disk_temp
+
+if [ ! -f "$disk_temp_file" ]; then
+    touch "$disk_temp_file"
+fi
+
+sudo /usr/local/bin/disk_temp >> "$disk_temp_file"
