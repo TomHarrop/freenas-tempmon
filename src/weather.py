@@ -19,7 +19,7 @@ def main():
 
     # format output
     time = weather.json()['current_observation']['local_epoch']
-    sensor = weather.json()['current_observation']['display_location']['full']
+    sensor = weather.json()['current_observation']['display_location']['city']
     serial = weather.json()['current_observation']['station_id']
     temperature = str(weather.json()['current_observation']['temp_c'])
     weather_line = [time, sensor, serial, temperature]
