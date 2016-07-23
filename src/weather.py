@@ -22,18 +22,19 @@ def main():
     sensor = weather.json()['current_observation']['display_location']['full']
     serial = weather.json()['current_observation']['station_id']
     temperature = weather.json()['current_observation']['temp_c']
+    weather_line = [time, sensor, serial, temperature]
+    print ','.join(weather_line)
 
-    # print output to data file
-    weather_file = 'dat/weather.csv'
-    if not os.path.isdir('dat'):
-        os.mkdir('dat')
-    if not os.path.exists(weather_file):
-        open(weather_file, 'w').close()
+    # # print output to data file
+    # weather_file = 'dat/weather.csv'
+    # if not os.path.isdir('dat'):
+    #     os.mkdir('dat')
+    # if not os.path.exists(weather_file):
+    #     open(weather_file, 'w').close()
 
-    weather_line = ()
-    with open(weather_file, 'a') as weather_append:
-        weather_append.write(','.join([time, sensor, serial, temperature]) +
-                           '\n')
+    # with open(weather_file, 'a') as weather_append:
+    #     weather_append.write(','.join([time, sensor, serial, temperature]) +
+    #                        '\n')
 
 if __name__ == "__main__":
     main()
