@@ -32,7 +32,7 @@ def main():
 
     weather_line = ()
     with open(weather_file, 'a') as weather_append:
-        weather_file.write(','.join([time, sensor, serial, temperature]) +
+        weather_append.write(','.join([time, sensor, serial, temperature]) +
                            '\n')
 
 if __name__ == "__main__":
