@@ -23,7 +23,7 @@ def main():
     serial = weather.json()['current_observation']['station_id']
     temperature = weather.json()['current_observation']['temp_c']
     weather_line = [time, sensor, serial, temperature]
-    print ','.join(weather_line)
+    print weather_line
 
     # # print output to data file
     # weather_file = 'dat/weather.csv'
