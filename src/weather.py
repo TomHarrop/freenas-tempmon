@@ -2,6 +2,7 @@
 
 import requests
 import argparse
+import os
 
 def main():
     # get api key from CLI
@@ -17,10 +18,22 @@ def main():
     weather = requests.get(weather_url)
 
     # format output
-    print weather.json()['current_observation']['local_epoch']
-    print weather.json()['current_observation']['display_location']['full']
-    print weather.json()['current_observation']['station_id']
-    print weather.json()['current_observation']['temp_c']
+    time = weather.json()['current_observation']['local_epoch']
+    sensor = weather.json()['current_observation']['display_location']['full']
+    serial = weather.json()['current_observation']['station_id']
+    temperature = weather.json()['current_observation']['temp_c']
+
+    # print output to data file
+    weather_file = 'dat/weather.csv'
+    if not os.path.isdir('dat'):
+        os.mkdir('dat')
+    if not os.path.exists(weather_file):
+        open(weather_file, 'w').close()
+
+    weather_line = ()
+    with open(weather_file, 'a') as weather_append:
+        weather.file.write(','.join([time, sensor, serial, temperature]) +
+                           '\n')
 
 if __name__ == "__main__":
     main()
