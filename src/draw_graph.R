@@ -27,6 +27,10 @@ plot.data <- sensor.data %>% mutate(
   filter(!is.na(temperature))
 plot.data <- plot.data %>% mutate(sensor = factor(sensor))
 
+# pick a date
+today <- Sys.time() - 86400
+plot.data <- plot.data %>% filter(strftime(time, format = "%j") >= strftime(today, format = "%j"))
+
 # make weather data for superimposing
 weather.data <- filter(plot.data, type == "weather")
 MutateWeather <- function(sensor.name){
